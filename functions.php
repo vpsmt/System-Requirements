@@ -6,6 +6,7 @@
         'ioncube' => 'ok',
         'mysql' => 'ok',
         'pdo' => 'ok',
+        'fsockopen' => 'ok',
         'mcrypt' => 'ok',
         'curl' => 'ok'
         );
@@ -22,6 +23,10 @@
             $results['pdo'] = 'Please make sure the PDO (PHP Data Objects) extension is installed on your server';
         }
 
+        if (!function_exists('fsockopen')) {
+            $results['fsockopen'] = 'Please make sure PHP function fsockopen() is not disabled';
+        }
+
         if ( !extension_loaded('ionCube Loader') || (function_exists('ioncube_loader_version') && version_compare(ioncube_loader_version(), '4.4', '<'))) {
              $results['ioncube'] = 'Please make sure the ionCube Loader is installed and it is 4.4 or newer';
         }
@@ -30,8 +35,14 @@
             $results['mcrypt'] = 'mcrypt extension not installed/not configured properly';
         }
 
-        if ( !function_exists('curl_multi_exec') || !function_exists('curl_init')) {
+        if ( !function_exists('curl_version')) {
             $results['curl'] = 'cURL extension not installed';
+        }
+        
+        if ( function_exists('curl_version')) {
+            $version = curl_version();
+            if (!($version['features'] & CURL_VERSION_SSL))
+                $results['curl'] = 'cURL SSL not installed';
         }
         return $results;
     }

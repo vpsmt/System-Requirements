@@ -14,7 +14,7 @@
 		dataType: 'JSON'
     }).then(
 		function(serverResult) {
-			if (serverResult.php && serverResult.ioncube && serverResult.mysql && serverResult.pdo && serverResult.mcrypt && serverResult.curl) {
+			if (serverResult.php && serverResult.ioncube && serverResult.mysql && serverResult.fsockopen && serverResult.pdo && serverResult.mcrypt && serverResult.curl) {
 				
 				for (var key in serverResult) {
 					if (serverResult.hasOwnProperty(key)) {

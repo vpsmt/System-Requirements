@@ -80,6 +80,10 @@
             <td>MySQL PDO<span></span></td>
             <td></td>
           </tr>
+          <tr id='fsockopen'>
+            <td>fsockopen<span></span></td>
+            <td></td>
+          </tr>
           <tr id='ioncube'>
             <td>Ioncube Loader 4.4+<span></span></td>
             <td></td>
