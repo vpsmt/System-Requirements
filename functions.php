@@ -11,8 +11,8 @@
         'curl' => 'ok'
         );
 
-        if ( version_compare(PHP_VERSION, '5.3.8', '<') ) {
-            $results['php'] = 'Please make sure PHP is 5.3.8 or newer';
+        if ( version_compare(PHP_VERSION, '5.5', '<') ) {
+            $results['php'] = 'Please make sure PHP is 5.5 or newer';
         }
 
         if ( !extension_loaded('mysql')) {
